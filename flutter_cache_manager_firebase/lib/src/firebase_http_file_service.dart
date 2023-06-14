@@ -8,7 +8,7 @@ class FirebaseHttpFileService extends HttpFileService {
   @override
   Future<FileServiceResponse> get(String url,
       {Map<String, String>? headers}) async {
-    var ref = FirebaseStorage.instance.ref().child(url);
+    var ref = FirebaseStorage.instance.refFromURL(url);
     var _url = await ref.getDownloadURL();
 
     return super.get(_url);
